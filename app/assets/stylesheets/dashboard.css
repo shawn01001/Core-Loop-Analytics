@@ -1,14 +1,18 @@
 html, body {
   background-color: #4c4c4c;
-  height: 100%;
-  margin: 0;
+  /*height: 100%;*/
+  /*margin: 0;*/
 }
 
-#wrapper {
-    min-height: 100%;
-    width:100%;
-    display: table;
-  }
+.navbar_format {
+  display: inline-block;
+  height: 50px;
+  width: 100%;
+  margin-bottom: 10px;
+  background-color: rgba(198,219,239,.90);
+}
+
+/*----- D3 -----*/
 .bubble_display{
   display: inline;
 }

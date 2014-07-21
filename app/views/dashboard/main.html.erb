@@ -1,21 +1,25 @@
-<span class="navbar_format"><p>TEST TEXT</p></span>
+<span class="navbar_format">
+  <p>TEST TEXT</p>
+</span>
 
-<div>
-  <p class="display_text">Data Series</p>
-
+<div class="left_sidebar">
+  <p>TEST TEXT</p>
+</div>
+<div class="center_display">
   <div class="itemdisplay">
-
     <div class="itembox">
-      <p id="visual-object-info"></p>
+    <p id="visual-object-info"></p>
     </div>
   </div>
-
   <div class="scatter_display">
     <button class="refresh">Timelapse</button>
   </div>
-  <div class="bubble_display"></div>
+  <div class="bubble_display">
+  </div>
 </div>
-
+<div class="right_sidebar">
+  <p>TEST TEXT</p>
+</div>
 
 
 <script type="text/javascript">
@@ -87,8 +91,8 @@ var itemDataSet = {
   ]
 };
 // canvas size
-var itemWidth = 620
-var itemHeight = 600
+var itemWidth = 320
+var itemHeight = 300
 // color design
 
 var itemColor = d3.scale.category20c();
@@ -102,7 +106,7 @@ var itemForce = d3.layout
                   .nodes(itemDataSet.nodes)
                   .links(itemDataSet.edges)
                   .size([itemWidth, itemHeight])
-                  .linkDistance([80])
+                  .linkDistance([20])
                   .charge([-1000])
                   .start();
 // define edges
@@ -117,7 +121,7 @@ var itemNodes = itemSvg.selectAll("circle")
                 .data(itemDataSet.nodes)
                 .enter()
                 .append("circle")
-                .attr("r", function(d){ return d.val * 4;})
+                .attr("r", function(d){ return d.val * 2;})
                 .on("mouseover", nodeMouseOver)
                 .on("mouseout", nodeMouseOut)
                 .style("fill", function(d) { return itemColor((d.pos / d.val) * 100); })
@@ -160,8 +164,8 @@ svg.selectAll("circle").data(scatterData).transition().duration(2000).ease("line
 //  dataset.push(newNumber);
 // }
 
-var scatterChartWidth = 750;
-var scatterChartHeight = 500;
+var scatterChartWidth = 500;
+var scatterChartHeight = 350;
 var scatterPadding = 30;
 
 var xScale = d3.scale.linear().domain([0, d3.max(scatterData, function(d){

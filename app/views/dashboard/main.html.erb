@@ -5,18 +5,24 @@
 <div class="left_sidebar">
   <p>TEST TEXT</p>
 </div>
+
 <div class="center_display">
-  <div class="itemdisplay">
+  <h1>PRIMARY DASHBOARD</h1>
+
+  <div class="force_plot_display">
     <div class="itembox">
     <p id="visual-object-info"></p>
     </div>
   </div>
+
   <div class="scatter_display">
     <button class="refresh">Timelapse</button>
   </div>
+
   <div class="bubble_display">
   </div>
 </div>
+
 <div class="right_sidebar">
   <p>TEST TEXT</p>
 </div>
@@ -48,18 +54,18 @@ var nodeMouseOut = function() {
 // dataset for visual
 var itemDataSet = {
   nodes: [
-          {name: "test_a", val: 7, pos: 7},
-          {name: "test_b", val: 4, pos: 3},
-          {name: "test_c", val: 1, pos: 1},
-          {name: "test_d", val: 8, pos: 5},
-          {name: "test_e", val: 9, pos: 9},
-          {name: "test_f", val: 7, pos: 7},
-          {name: "test_g", val: 6, pos: 3},
-          {name: "test_h", val: 5, pos: 3},
-          {name: "test_i", val: 4, pos: 3},
-          {name: "test_j", val: 2, pos: 3},
-          {name: "test_k", val: 2, pos: 1},
-          {name: "test_l", val: 4, pos: 4}
+          {item: "test_a", val: 7, pos: 7},
+          {item: "test_b", val: 4, pos: 3},
+          {item: "test_c", val: 1, pos: 1},
+          {item: "test_d", val: 8, pos: 5},
+          {item: "test_e", val: 9, pos: 9},
+          {item: "test_f", val: 7, pos: 7},
+          {item: "test_g", val: 6, pos: 3},
+          {item: "test_h", val: 5, pos: 3},
+          {item: "test_i", val: 4, pos: 3},
+          {item: "test_j", val: 2, pos: 3},
+          {item: "test_k", val: 2, pos: 1},
+          {item: "test_l", val: 4, pos: 4}
   ],
   edges: [
           {source: 0, target: 1},
@@ -75,7 +81,7 @@ var itemDataSet = {
           {source: 3, target: 8},
           {source: 0, target: 9},
           {source: 1, target: 9},
-          {source: 2, target: 7},
+          {source: 2, target: 5},
           {source: 2, target: 8},
           {source: 2, target: 9},
           {source: 4, target: 8},
@@ -92,12 +98,12 @@ var itemDataSet = {
 };
 // canvas size
 var itemWidth = 320
-var itemHeight = 300
+var itemHeight = 400
 // color design
 
 var itemColor = d3.scale.category20c();
 // create canvas
-var itemSvg = d3.select(".itemdisplay").append("svg")
+var itemSvg = d3.select(".force_plot_display").append("svg")
     .attr("width", itemWidth)
     .attr("height", itemHeight);
 // create force layout
@@ -114,7 +120,7 @@ var itemEdges = itemSvg.selectAll("line")
                 .data(itemDataSet.edges)
                 .enter()
                 .append("line")
-                .style("stroke", "#00ff00")
+                .style("stroke", "#4c4c4c")
                 .style("stroke-width", 1);
 // define nodes
 var itemNodes = itemSvg.selectAll("circle")
@@ -155,7 +161,7 @@ svg.selectAll("circle").data(scatterData).transition().duration(2000).ease("line
   return yScale(d[1]);
 }).attr("r", function(d) {
   return rScale(d[1]);
-}).attr("fill", "purple").attr("stroke", "white").attr("stroke-width", 1);
+}).attr("fill", "orange").attr("stroke", "blue").attr("stroke-width", 1);
 })
 // var numValues = dataset.length;
 // dataset = [];
@@ -199,13 +205,13 @@ svg.append("g").attr("class", "axis").attr("transform", "translate(" + scatterPa
 
 // -------- AGE BUBBLE PLOT ---------
 var width = 280,
-    height = 200,
+    height = 400,
     padding = 1.5, // separation between same-color nodes
     clusterPadding = 6, // separation between different-color nodes
-    maxRadius = 6;
+    maxRadius = 10;
 
 var n = 100, // total number of nodes
-    m = 5; // number of distinct clusters
+    m = 7; // number of distinct clusters
 
 var color = d3.scale.category20c()
     .domain(d3.range(m));
